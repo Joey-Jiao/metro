@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Metro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A tree-structured LLM chat interface for non-linear thinking and learning.
 
-Currently, two official plugins are available:
+## The Problem
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+LLM chat interfaces are linear. You send a message, get a response, scroll down, repeat. But learning doesn't work that way.
 
-## React Compiler
+When you're trying to understand something complex, you branch. You hit a term you don't understand, so you ask about it. That leads to another question. Eventually you want to go back to where you started, but now you've lost the thread, or you're managing five separate conversations that should be one.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## The Solution
 
-## Expanding the ESLint configuration
+Metro treats conversations as trees, not threads.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Branch from any message to explore a sub-question
+- See your entire exploration as a visual graph on a canvas
+- Collapse branches into summaries to reduce clutter
+- Return to your main line of inquiry without losing context
+- Organize related explorations into projects
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Design Intentions
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Metro is built for personal knowledge exploration, not enterprise deployment.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Trees, not graphs.** Branches are for bounded sub-questions. You explore, you understand, you return to the main thread. There is no "merge" operation. This is intentional — merging conversation branches creates semantic confusion. If you need synthesis, do it yourself on the main branch.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Canvas as primary view.** The graph isn't a sidebar or a minimap. It's the main interface. You should be able to see the shape of your thinking at a glance: where you went deep, where you branched, where you got stuck.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Summaries over scrolling.** Each node shows a short summary by default. Click to expand. This lets you navigate a long exploration without endless scrolling.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Local-first, bring your own key.** Your data stays on your machine. You provide your own API key. No accounts, no sync, no telemetry.
+
+## Stack
+
+- SolidJS + TypeScript
+- D3 (tree layout + zoom)
+- Tailwind CSS
+- Dexie (IndexedDB)
+- Vite
+
+## Infra Series
+
+Metro is part of a personal infrastructure project series:
+
+| Project | Purpose |
+|---------|---------|
+| tectonic | Linux bootstrap |
+| strata | MCP server |
+| magma | Code templates |
+| metro | Tree-structured LLM chat |
+
+## License
+
+MIT
