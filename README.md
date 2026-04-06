@@ -2,33 +2,29 @@
 
 A tree-structured LLM chat interface for non-linear thinking and learning.
 
-## The Problem
+## Why
 
-LLM chat interfaces are linear. You send a message, get a response, scroll down, repeat. But learning doesn't work that way.
+Most LLM chat interfaces are linear — send a message, get a response, keep scrolling. This works for simple questions, but complex learning naturally branches. An unfamiliar term leads to a side question, which leads to another, and before long the original thread is buried.
 
-When you're trying to understand something complex, you branch. You hit a term you don't understand, so you ask about it. That leads to another question. Eventually you want to go back to where you started, but now you've lost the thread, or you're managing five separate conversations that should be one.
-
-## The Solution
-
-Metro treats conversations as trees, not threads.
+Metro treats conversations as trees instead of threads, allowing exploration of sub-questions while preserving the main line of inquiry.
 
 - Branch from any message to explore a sub-question
-- See your entire exploration as a visual graph on a canvas
+- See the entire exploration as a visual graph on a canvas
 - Collapse branches into summaries to reduce clutter
-- Return to your main line of inquiry without losing context
+- Return to the main thread without losing place
 - Organize related explorations into projects
 
-## Design Intentions
+## Design
 
-Metro is built for personal knowledge exploration, not enterprise deployment.
+Metro is a personal knowledge exploration tool.
 
-**Trees, not graphs.** Branches are for bounded sub-questions. You explore, you understand, you return to the main thread. There is no "merge" operation. This is intentional — merging conversation branches creates semantic confusion. If you need synthesis, do it yourself on the main branch.
+**Trees, not graphs.** Branches are for bounded sub-questions — explore, understand, then return to the main thread. There is no "merge" operation, since merging conversation branches tends to create more confusion than clarity. Synthesis happens naturally on the main thread.
 
-**Canvas as primary view.** The graph isn't a sidebar or a minimap. It's the main interface. You should be able to see the shape of your thinking at a glance: where you went deep, where you branched, where you got stuck.
+**Canvas as primary view.** The graph is the main interface, not a sidebar or minimap. It provides an overview of the exploration at a glance — where it went deep, where it branched, where it got stuck.
 
-**Summaries over scrolling.** Each node shows a short summary by default. Click to expand. This lets you navigate a long exploration without endless scrolling.
+**Summaries over scrolling.** Each node shows a short summary by default, expandable on click. This makes navigating long explorations easier without endless scrolling.
 
-**Local-first, bring your own key.** Your data stays on your machine. You provide your own API key. No accounts, no sync, no telemetry.
+**Local-first, bring your own key.** All data stays local. Users provide their own API key. No accounts, no sync, no telemetry.
 
 ## Stack
 
